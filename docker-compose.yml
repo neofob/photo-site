@@ -1,0 +1,15 @@
+---
+version: '3'
+
+services:
+  web:
+    image: nginx
+    volumes:
+      - ${CONTENT_DIR}:/usr/share/nginx/html:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NGINX_HOST=${NGINX_HOST}
+      - NGINX_PORT=80
+    command: "nginx -g 'daemon off;'"
